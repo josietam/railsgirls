@@ -6,8 +6,19 @@
       <div class="col-md-4">
         <h4><%= link_to idea.name, idea %></h4><hr>
         <%= image_tag idea.picture_url, width: '50%' if idea.picture.present?%><br>
-        <%= idea.description %>
+        <%= idea.description %><br><br>
+        <%= link_to idea do %>
+          <span class="glyphicon glyphicon-eye-open"></span>
+        <% end %>
+        <%= link_to edit_idea_path(idea) do %>
+          <span class="glyphicon glyphicon-pencil"></span>
+        <% end %>
+        <%= link_to idea, method: :delete, data: {confirm: 'Are you sure?'} do%>
+          <span class="glyphicon glyphicon-trash"></span>
+        <% end %>
       </div>
+
     <% end %>
   </div>
 <% end %>
+
